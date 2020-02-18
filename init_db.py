@@ -62,12 +62,13 @@ for node in cg["nodes"]:
           "create schema sch_"+n+"_hriste; \n"
           "create schema "+n+"_hriste; \n")
     lLogins = node["logins"]
-    print ("--kouc login")
     for u in lLogins:
         print (" \n" \
-  "create user "+n+"_"+u+" with_password = 'SpanekSePrecenuje', defaultnamespace, computenode, etc ...; \n" \
+        "--create user "+n+"_"+u+" with_password = 'SpanekSePrecenuje', defaultnamespace, computenode, etc ...; \n" \
         "create role_"+n+"_"+u+";\n" \
-        "create schema sch_"+n+"_"+u+";\n" )
+        "create schema sch_"+n+"_"+u+";\n" \
+        "create OR REPLACE user "+u+" password = 'SpanekSePrecenuje', must_change_password = true, DEFAULT_WAREHOUSE = 'EXT_PROJECT', DEFAULT_NAMESPACE = 'CHOCHOLOUSP."+n+"', DEFAULT_ROLE = 'role_"+n+"';" \
+        )
 
 #granty
 for node in cg["nodes"]:
