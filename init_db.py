@@ -15,16 +15,16 @@ cg={ \
       "email" : "hosak@avast.com"
       },
       {"name"  :"veronika",
-      "email" : "hosak@avast.com"
+      "email" : "veronika@gmail.com"
       },
       {"name"  : "pavla",
-      "email" : "hosak@avast.com"
+      "email" : "jirkova.pa@gmail.com"
       },
       {"name"  : "olga",
-      "email" : "hosak@avast.com"
+      "email" : "olga.kurtinova@natur.cuni.cz"
       },
       {"name"  : "bublina",
-      "email" : "hosak@avast.com"
+      "email" : "bublina@seznam.com"
       }]
     }
 
