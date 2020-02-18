@@ -1,96 +1,98 @@
 cg={ \
-  "nodes": [
-    {"name" : "czechita",
-     "logins" : ["01", "02"]
+  "NODES": [
+    {"NAME" : "CZECHTIA",
+     "LOGINS" : ["01", "02"]
     },
-    {"name" : "teror",
-     "logins" : ["01", "02"]
+    {"NAME" : "TEROR",
+     "LOGINS" : ["01", "02"]
     },
-    {"name" : "pokrocili",
-     "logins" : ["01", "02"]
+    {"NAME" : "POKROCILI",
+     "LOGINS" : ["01", "02"]
     }
 ],
-"coaches": [
-      {"name"  : "ondra",
-      "email" : "hosak@avast.com"
+"COACHES": [
+      {"NAME"  : "ONDRA",
+      "EMAIL" : "HOSAK@AVAST.COM"
       },
-      {"name"  :"veronika",
-      "email" : "veronika@gmail.com"
+      {"NAME"  :"VERONIKA",
+      "EMAIL" : "VERONIKA@GMAIL.COM"
       },
-      {"name"  : "pavla",
-      "email" : "jirkova.pa@gmail.com"
+      {"NAME"  : "PAVLA",
+      "EMAIL" : "JIRKOVA.PA@GMAIL.COM"
       },
-      {"name"  : "olga",
-      "email" : "olga.kurtinova@natur.cuni.cz"
+      {"NAME"  : "OLGA",
+      "EMAIL" : "OLGA.KURTINOVA@NATUR.CUNI.CZ"
       },
-      {"name"  : "bublina",
-      "email" : "bublina@seznam.com"
+      {"NAME"  : "BUBLINA",
+      "EMAIL" : "BUBLINA@SEZNAM.COM"
       }]
     }
 
 #jeden kouc ;)
-print ("create role role_superkouc; \n" \
-       "grant role role_superkouc to user chocholousp; \n"
-       "create role role_kouc; \n" \
+print ("CREATE ROLE ROLE_SUPERKOUC; \n" \
+       "GRANT ROLE ROLE_SUPERKOUC TO USER CHOCHOLOUSP; \n"
+       "CREATE ROLE ROLE_KOUC; \n" \
        "/ * * * * * * * *  * * * * **********************************/ \n"
       )
 #a dalsi kouci
-print ("--vytvoreni koucu")
-for c in cg["coaches"]:
-    u = c["name"]
-    e = c["email"]
-    print("create OR REPLACE user "+u+" password = 'SpanekSeNeprecenuje', email = '"+e+"', must_change_password = true, DEFAULT_WAREHOUSE = 'EXT_PROJECT', DEFAULT_NAMESPACE = 'CHOCHOLOUSP.PUBLIC', DEFAULT_ROLE = 'role_kouc';")
-    #print ("create user "+u+" with_password = 'SpanekSeNeprecenuje', email = "+e+", must_change_password; \n")
-#create user ondra password = 'SpanekSeNeprecenuje', email = 'hosak@avast.com', must_change_password = true, DEFAULT_WAREHOUSE = 'EXT_PROJECT', DEFAULT_NAMESPACE = 'CHOCHOLOUSP.PUBLIC', DEFAULT_ROLE = 'EXT_ADMIN';
+print ("--VYTVORENI KOUCU")
+for c in cg["COACHES"]:
+    u = c["NAME"]
+    e = c["EMAIL"]
+    print("CREATE OR REPLACE USER "+u+" PASSWORD = 'SPANEKSENEPRECENUJE', EMAIL = '"+e+"', MUST_CHANGE_PASSWORD = TRUE, DEFAULT_WAREHOUSE = 'EXT_PROJECT', DEFAULT_NAMESPACE = 'CHOCHOLOUSP.PUBLIC', DEFAULT_ROLE = 'ROLE_KOUC';")
+    #print ("CREATE USER "+u+" WITH_PASSWORD = 'SPANEKSENEPRECENUJE', EMAIL = "+e+", MUST_CHANGE_PASSWORD; \n")
+print("")
+#create user ondra password = 'SPANEKSENEPRECENUJE', email = 'HOSAK@AVAST.COM', must_change_password = true, DEFAULT_WAREHOUSE = 'EXT_PROJECT', DEFAULT_NAMESPACE = 'CHOCHOLOUSP.PUBLIC', DEFAULT_ROLE = 'EXT_ADMIN';
 
 #vytvoreni schemat a roli pro kazdy node
-print ("--user login, schema, role")
-for node in cg["nodes"]:
-    n = node["name"]
+print ("--USER LOGIN, SCHEMA, ROLE")
+for node in cg["NODES"]:
+    n = node["NAME"]
     print ("" \
-          "-- Vytvoreni schemat a roli node "+n+"; \n"          
-          "create schema "+n+"; \n"
-          "create role role_"+n+"; \n" \
-          "create role role_"+n+"_kouc; \n" \
-          "create schema sch_"+n+"_hriste; \n"
-          "create schema "+n+"_hriste; \n")
-    lLogins = node["logins"]
+          "-- VYTVORENI SCHEMAT A ROLI NODE "+n+"; \n"          
+          "CREATE SCHEMA "+n+"; \n"
+          "CREATE ROLE ROLE_"+n+"; \n" \
+          "CREATE ROLE ROLE_"+n+"_KOUC; \n" \
+          "CREATE SCHEMA SCH_"+n+"_HRISTE; \n"
+          "CREATE SCHEMA "+n+"_HRISTE; \n")
+    lLogins = node["LOGINS"]
     for u in lLogins:
         print (" \n" \
-        "--create user "+n+"_"+u+" with_password = 'SpanekSePrecenuje', defaultnamespace, computenode, etc ...; \n" \
-        "create role_"+n+"_"+u+";\n" \
-        "create schema sch_"+n+"_"+u+";\n" \
-        "create OR REPLACE user "+u+" password = 'SpanekSePrecenuje', must_change_password = true, DEFAULT_WAREHOUSE = 'EXT_PROJECT', DEFAULT_NAMESPACE = 'CHOCHOLOUSP."+n+"', DEFAULT_ROLE = 'role_"+n+"';" \
+        "--CREATE USER "+n+"_"+u+" WITH_PASSWORD = 'SPANEKSEPRECENUJE', DEFAULTNAMESPACE, COMPUTENODE, ETC ...; \n" \
+        "CREATE ROLE_"+n+"_"+u+";\n" \
+        "CREATE SCHEMA SCH_"+n+"_"+u+";\n" \
+        "CREATE OR REPLACE USER "+u+" PASSWORD = 'SPANEKSEPRECENUJE', MUST_CHANGE_PASSWORD = TRUE, DEFAULT_WAREHOUSE = 'EXT_PROJECT', DEFAULT_NAMESPACE = 'CHOCHOLOUSP."+n+"', DEFAULT_ROLE = 'ROLE_"+n+"'; \n" \
         )
 
 #granty
-for node in cg["nodes"]:
-    n = node["name"]
-    print ("-- grantnuti prav koucum pro node "+n+"; \n"
-           "grant role role_"+n+"_kouc to role_superkouc; \n" \
-     "grant role role_"+n+" to role_"+n+"_kouc; \n" )
-print(" /*uncomment at will")
-for node in cg["nodes"]:
-    n = node["name"]
-    print("-- roles for " + n)
-    for c in cg["coaches"]:
-        u = c["name"]
+for node in cg["NODES"]:
+    n = node["NAME"]
+    print ("-- GRANTNUTI PRAV KOUCUM PRO NODE "+n+"; \n"
+           "GRANT ROLE ROLE_"+n+"_KOUC TO ROLE_SUPERKOUC; \n" \
+     "GRANT ROLE ROLE_"+n+" TO ROLE_"+n+"_KOUC; \n" )
+print(" /*UNCOMMENT AT WILL")
+for node in cg["NODES"]:
+    n = node["NAME"]
+    print("-- ROLES FOR " + n)
+    for c in cg["COACHES"]:
+        u = c["NAME"]
         print ("" \
-        "--grant role_"+n+"_kouc to "+u+"")
-print("uncomment at will */")
+        "--GRANT ROLE_"+n+"_KOUC TO "+u+"")
+print("UNCOMMENT AT WILL */ \n")
 
-print ("--grant select on schemas to roles")
-for node in cg["nodes"]:
-    n = node["name"]
-    print ("grant select on all tables in schema sch_"+n+" to role_"+n+"\n" \
-    "grant all on schema sch_"+n+" to role_"+n+"_kouc; ")
-    for u in node["logins"]:
-        print ("grant role_"+n+" to role_"+n+"_"+u+"\n")
+print ("--GRANT SELECT ON SCHEMAS TO ROLES")
+for node in cg["NODES"]:
+    n = node["NAME"]
+    print ("GRANT SELECT ON ALL TABLES IN SCHEMA SCH_"+n+" TO ROLE_"+n+"; \n" \
+    "GRANT ALL ON SCHEMA SCH_"+n+" TO ROLE_"+n+"_KOUC; \n"
+    "GRANT ALL ON ALL TABLES IN SCHEMA SCH_"+n+" TO ROLE_"+n+"_KOUC; ")
+    for u in node["LOGINS"]:
+        print ("GRANT ROLE_"+n+" TO ROLE_"+n+"_"+u+"")
 
-for node in cg["nodes"]:
-    n = node["name"]
-    for u in node["logins"]:
-        print ("grant all on schema sch_"+n+"_"+u+" to role_"+n+"_"+u+";" \
+for node in cg["NODES"]:
+    n = node["NAME"]
+    for u in node["LOGINS"]:
+        print ("GRANT ALL ON SCHEMA SCH_"+n+"_"+u+" TO ROLE_"+n+"_"+u+";" \
          )
 #create schema $schema
 # role
