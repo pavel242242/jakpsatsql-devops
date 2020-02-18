@@ -3,10 +3,10 @@ cg={ \
     {"name" : "czechita",
      "logins" : ["01", "02"]
     },
-    {"name" : "uk",
+    {"name" : "teror",
      "logins" : ["01", "02"]
     },
-    {"name" : "u3v",
+    {"name" : "pokrocili",
      "logins" : ["01", "02"]
     }
 ],
@@ -27,13 +27,6 @@ cg={ \
       "email" : "hosak@avast.com"
       }]
     }
-
-for t in cg["coaches"]:
-    print(t)
-
-lLogins = ("01", "02")
-lSlogins = ("ondra", "veronika", "pavla", "olga")
-nodes = ("czechita", "uk", "pokrocili")
 
 #jeden kouc ;)
 print ("create role role_superkouc; \n" \
