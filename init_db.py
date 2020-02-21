@@ -80,7 +80,8 @@ print("UNCOMMENT AT WILL */ \n")
 print ("--GRANT SELECT ON SCHEMAS TO ROLES")
 for node in cg["NODES"]:
     n = node["NAME"]
-    print ("GRANT SELECT ON ALL TABLES IN SCHEMA SCH_"+n+" TO ROLE_"+n+"; \n" \
+    print ("GRANT USAGE ON SCHEMA SCH_"+n+" TO ROLE_"+n+"; \n" \
+    "GRANT SELECT ON ALL TABLES IN SCHEMA SCH_"+n+" TO ROLE_"+n+"; \n" \
     "GRANT ALL ON SCHEMA SCH_"+n+" TO ROLE_"+n+"_KOUC; \n"
     "GRANT ALL ON ALL TABLES IN SCHEMA SCH_"+n+" TO ROLE_"+n+"_KOUC; ")
     for u in node["LOGINS"]:
