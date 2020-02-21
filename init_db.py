@@ -80,18 +80,18 @@ print("UNCOMMENT AT WILL */ \n")
 print ("--GRANT SELECT ON SCHEMAS TO ROLES")
 for node in cg["NODES"]:
     n = node["NAME"]
-    print ("GRANT USAGE ON SCHEMA SCH_"+n+" TO ROLE_"+n+"; \n" \
-    "GRANT SELECT ON ALL TABLES IN SCHEMA SCH_"+n+" TO ROLE_"+n+"; \n" \
-    "GRANT ALL ON SCHEMA SCH_"+n+" TO ROLE_"+n+"_KOUC; \n"
-    "GRANT ALL ON ALL TABLES IN SCHEMA SCH_"+n+" TO ROLE_"+n+"_KOUC; ")
+    print ("GRANT USAGE ON SCHEMA SCH_"+n+" TO ROLE ROLE_"+n+"; \n" \
+    "GRANT SELECT ON ALL TABLES IN SCHEMA SCH_"+n+" TO ROLE ROLE_"+n+"; \n" \
+    "GRANT ALL ON SCHEMA SCH_"+n+" TO ROLE ROLE_"+n+"_KOUC; \n"
+    "GRANT ALL ON ALL TABLES IN SCHEMA SCH_"+n+" TO ROLE ROLE_"+n+"_KOUC; ")
     for u in node["LOGINS"]:
         print ("GRANT ROLE_"+n+" TO ROLE ROLE_"+n+"_"+u+"")
 
 for node in cg["NODES"]:
     n = node["NAME"]
     for u in node["LOGINS"]:
-        print ("GRANT ALL ON SCHEMA SCH_"+n+"_"+u+" TO ROLE_"+n+"_"+u+"; \n" \
-        "GRANT ALL ON ALL TABLES IN SCHEMA SCH_"+n+"_"+u+" TO ROLE_"+n+"_"+u+";" )
+        print ("GRANT ALL ON SCHEMA SCH_"+n+"_"+u+" TO ROLE ROLE_"+n+"_"+u+"; \n" \
+        "GRANT ALL ON ALL TABLES IN SCHEMA SCH_"+n+"_"+u+" TO ROLE ROLE_"+n+"_"+u+";" )
 #create schema $schema
 # role
 # ownership
