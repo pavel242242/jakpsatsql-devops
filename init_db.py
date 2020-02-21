@@ -1,6 +1,6 @@
 cg={ \
   "NODES": [
-    {"NAME" : "CZECHTIA",
+    {"NAME" : "CZECHITA",
      "LOGINS" : ["01", "02"]
     },
     {"NAME" : "TEROR",
@@ -57,7 +57,7 @@ for node in cg["NODES"]:
     lLogins = node["LOGINS"]
     for u in lLogins:
         print (" \n" \
-        "CREATE ROLE_"+n+"_"+u+";\n" \
+        "CREATE ROLE ROLE_"+n+"_"+u+";\n" \
         "CREATE SCHEMA SCH_"+n+"_"+u+";\n" \
         "CREATE OR REPLACE USER "+u+" PASSWORD = 'SpANEKSePrECENUJE', MUST_CHANGE_PASSWORD = TRUE, DEFAULT_WAREHOUSE = 'EXT_PROJECT', DEFAULT_NAMESPACE = 'CHOCHOLOUSP."+n+"', DEFAULT_ROLE = 'ROLE_"+n+"'; \n" \
         )
