@@ -49,10 +49,9 @@ for node in cg["NODES"]:
     n = node["NAME"]
     print ("" \
           "-- VYTVORENI SCHEMAT A ROLI NODE "+n+"; \n"          
-          "CREATE SCHEMA SCH_"+n+"; \n"
           "CREATE ROLE ROLE_"+n+"; \n" \
           "CREATE ROLE ROLE_"+n+"_KOUC; \n" \
-          "CREATE SCHEMA SCH_"+n+"_HRISTE; \n"
+          "CREATE SCHEMA SCH_"+n+"; \n"
           "CREATE SCHEMA SCH_"+n+"_HRISTE; \n")
     lLogins = node["LOGINS"]
     for u in lLogins:
