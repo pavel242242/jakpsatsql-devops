@@ -85,7 +85,7 @@ for node in cg["NODES"]:
     "GRANT ALL ON SCHEMA SCH_"+n+" TO ROLE ROLE_"+n+"_KOUC; \n"
     "GRANT ALL ON ALL TABLES IN SCHEMA SCH_"+n+" TO ROLE ROLE_"+n+"_KOUC; ")
     for u in node["LOGINS"]:
-        print ("GRANT ROLE_"+n+" TO ROLE ROLE_"+n+"_"+u+"")
+        print ("GRANT ROLE ROLE_"+n+" TO ROLE ROLE_"+n+"_"+u+"")
 
 for node in cg["NODES"]:
     n = node["NAME"]
