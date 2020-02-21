@@ -91,7 +91,9 @@ for node in cg["NODES"]:
     n = node["NAME"]
     for u in node["LOGINS"]:
         print ("GRANT ALL ON SCHEMA SCH_"+n+"_"+u+" TO ROLE ROLE_"+n+"_"+u+"; \n" \
-        "GRANT ALL ON ALL TABLES IN SCHEMA SCH_"+n+"_"+u+" TO ROLE ROLE_"+n+"_"+u+";" )
+        "GRANT ALL ON ALL TABLES IN SCHEMA SCH_"+n+"_"+u+" TO ROLE ROLE_"+n+"_"+u+";" \
+        "GRANT ALL ON SCHEMA SCH_"+n+"_"+u+" TO ROLE ROLE_"+n+"_KOUC; \n" \
+        "GRANT ALL ON ALL TABLES IN SCHEMA SCH_"+n+"_"+u+" TO ROLE ROLE_"+n+"_KOUC;" )
 #create schema $schema
 # role
 # ownership
