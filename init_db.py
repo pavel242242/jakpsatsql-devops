@@ -81,6 +81,7 @@ print ("--GRANT SELECT ON SCHEMAS TO ROLES")
 for node in cg["NODES"]:
     n = node["NAME"]
     print ("GRANT USAGE ON DATABASE COURSES TO ROLE ROLE_"+n+"; \n" \
+    "GRANT USAGE ON WAREHOUSE EXT_PROJECT01 TO ROLE ROLE_"+n+"; \n" \
     "GRANT USAGE ON SCHEMA SCH_"+n+" TO ROLE ROLE_"+n+"; \n" \
     "GRANT SELECT ON ALL TABLES IN SCHEMA SCH_"+n+" TO ROLE ROLE_"+n+"; \n" \
     "GRANT USAGE ON SCHEMA SCH_"+n+"_HRISTE TO ROLE ROLE_"+n+"; \n" \
