@@ -59,7 +59,7 @@ for node in cg["NODES"]:
         print (" \n" \
         "CREATE ROLE ROLE_"+n+"_"+u+";\n" \
         "CREATE SCHEMA SCH_"+n+"_"+u+";\n" \
-        "CREATE OR REPLACE USER "+u+" PASSWORD = 'SpANEKSePrECENUJE', MUST_CHANGE_PASSWORD = TRUE, DEFAULT_WAREHOUSE = 'EXT_PROJECT', DEFAULT_NAMESPACE = 'CHOCHOLOUSP."+n+"', DEFAULT_ROLE = 'ROLE_"+n+"'; \n" \
+        "CREATE OR REPLACE USER "+n+"_"+u+" PASSWORD = 'SpANEKSePrECENUJE', MUST_CHANGE_PASSWORD = TRUE, DEFAULT_WAREHOUSE = 'EXT_PROJECT', DEFAULT_NAMESPACE = 'CHOCHOLOUSP."+n+"', DEFAULT_ROLE = 'ROLE_"+n+"'; \n" \
         )
 
 #granty
