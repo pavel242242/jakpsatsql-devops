@@ -3,7 +3,7 @@ cg={ \
     {"NAME" : "CZECHITA",
      "LOGINS" : ["01", "02"]
     },
-    {"NAME" : "TEROR",
+    {"NAME" : "UK",
      "LOGINS" : ["01", "02"]
     },
     {"NAME" : "POKROCILI",
@@ -66,8 +66,8 @@ for node in cg["NODES"]:
 for node in cg["NODES"]:
     n = node["NAME"]
     print ("-- GRANTNUTI PRAV KOUCUM PRO NODE "+n+"; \n"
-           "GRANT ROLE ROLE_"+n+"_KOUC TO ROLE_SUPERKOUC; \n" \
-     "GRANT ROLE ROLE_"+n+" TO ROLE_"+n+"_KOUC; \n" )
+           "GRANT ROLE ROLE_"+n+"_KOUC TO ROLE ROLE_SUPERKOUC; \n" \
+     "GRANT ROLE ROLE_"+n+" TO ROLE ROLE_"+n+"_KOUC; \n" )
 print(" /*UNCOMMENT AT WILL")
 for node in cg["NODES"]:
     n = node["NAME"]
@@ -75,7 +75,7 @@ for node in cg["NODES"]:
     for c in cg["COACHES"]:
         u = c["NAME"]
         print ("" \
-        "--GRANT ROLE_"+n+"_KOUC TO KOUC_"+u+"")
+        "--GRANT ROLE_"+n+"_KOUC TO ROLE KOUC_"+u+"")
 print("UNCOMMENT AT WILL */ \n")
 
 print ("--GRANT SELECT ON SCHEMAS TO ROLES")
@@ -85,7 +85,7 @@ for node in cg["NODES"]:
     "GRANT ALL ON SCHEMA SCH_"+n+" TO ROLE_"+n+"_KOUC; \n"
     "GRANT ALL ON ALL TABLES IN SCHEMA SCH_"+n+" TO ROLE_"+n+"_KOUC; ")
     for u in node["LOGINS"]:
-        print ("GRANT ROLE_"+n+" TO ROLE_"+n+"_"+u+"")
+        print ("GRANT ROLE_"+n+" TO ROLE ROLE_"+n+"_"+u+"")
 
 for node in cg["NODES"]:
     n = node["NAME"]
