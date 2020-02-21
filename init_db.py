@@ -83,6 +83,8 @@ for node in cg["NODES"]:
     print ("GRANT USAGE ON DATABASE COURSES TO ROLE ROLE_"+n+"; \n" \
     "GRANT USAGE ON SCHEMA SCH_"+n+" TO ROLE ROLE_"+n+"; \n" \
     "GRANT SELECT ON ALL TABLES IN SCHEMA SCH_"+n+" TO ROLE ROLE_"+n+"; \n" \
+    "GRANT USAGE ON SCHEMA SCH_"+n+"_HRISTE TO ROLE ROLE_"+n+"; \n" \
+    "GRANT SELECT ON ALL TABLES IN SCHEMA SCH_"+n+"_HRISTE TO ROLE ROLE_"+n+"; \n" \
     "GRANT ALL ON SCHEMA SCH_"+n+" TO ROLE ROLE_"+n+"_KOUC; \n"
     "GRANT ALL ON ALL TABLES IN SCHEMA SCH_"+n+" TO ROLE ROLE_"+n+"_KOUC; ")
     for u in node["LOGINS"]:
