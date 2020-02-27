@@ -1,10 +1,10 @@
 cg={ \
   "NODES": [
     {"NAME" : "CZECHITA",
-     "LOGINS" : ["01", "02"]
+     "LOGINS" : ["balazoval",	"barkovaj",	"bartosovak",	"beranovam",	"bernardovaa",	"camprovan",	"coblovas",	"cervenkovai",	"cizkovae",	"hrubaj",	"hubinkovab",	"chytilovah",	"knirovat",	"konecnav",	"korycanovaj",	"kruckad",	"merickovas",	"michlovam",	"moravkovap",	"nadaskap",	"novad",	"otcenasovam",	"polednovap",	"sommerovag",	"strokovaa",	"sukovam",	"synkovak",	"teglasiovav",	"torokovas",	"vectenn",	"zabranskad",	"zavadiloval",]
     },
     {"NAME" : "UK",
-     "LOGINS" : ["01", "02"]
+     "LOGINS" : ["adamect",	"boxanovap",	"brabecm",	"danovskyr",	"fidranskyt",	"iarulinz",	"janovskyj",	"krizovak",	"linhartovaa",	"malkusd",	"novotnat",	"otradovcovab",	"paucinovaa",	"perelygink",	"piekarzo",	"rebikovam",	"skurcakovak",	"stehnovaa",	"strykav",	"stetkaj",	"svejkovat",	"zelenkaf",	"zemlickovat",	"dostalm",	"duseka",	"epikhinav",	"karbanovak",	"kleckovad",	"kodesj",	"kovarikovae",	"krejcovas",	"ligro",	"linerj",	"melicharf",	"navratilovat",	"opltovam",	"petrzelkovat",	"samecp",	"sedajm",	"smidd",	"storovaa",	"sustal",]
     },
     {"NAME" : "POKROCILI",
      "LOGINS" : ["01", "02"]
@@ -29,9 +29,9 @@ cg={ \
     }
 
 #jeden kouc ;)
-print ("CREATE ROLE ROLE_SUPERKOUC; \n" \
+print ("CREATE OR REPLACE ROLE ROLE_SUPERKOUC; \n" \
        "GRANT ROLE ROLE_SUPERKOUC TO USER CHOCHOLOUSP; \n"
-       "CREATE ROLE ROLE_KOUC; \n" \
+       "CREATE OR REPLACE ROLE ROLE_KOUC; \n" \
        "/ * * * * * * * *  * * * * **********************************/ \n"
       )
 #a dalsi kouci
