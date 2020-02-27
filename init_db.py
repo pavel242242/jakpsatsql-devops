@@ -1,3 +1,4 @@
+dbname = "COURSES"
 cg={ \
   "NODES": [
     {"NAME" : "CZECHITA",
@@ -32,14 +33,14 @@ cg={ \
 print ("CREATE OR REPLACE ROLE ROLE_SUPERKOUC; \n" \
        "GRANT ROLE ROLE_SUPERKOUC TO USER CHOCHOLOUSP; \n"
        "CREATE OR REPLACE ROLE ROLE_KOUC; \n" \
-       "/ * * * * * * * *  * * * * **********************************/ \n"
+       "/* * * * * * * *  * * * * **********************************/ \n"
       )
 #a dalsi kouci
 print ("--VYTVORENI KOUCU")
 for c in cg["COACHES"]:
     u = c["NAME"]
     e = c["EMAIL"]
-    print("CREATE OR REPLACE USER KOUC_"+u+" PASSWORD = 'SpANEKSeNePRECENUJE', EMAIL = '"+e+"', MUST_CHANGE_PASSWORD = TRUE, DEFAULT_WAREHOUSE = 'EXT_PROJECT', DEFAULT_NAMESPACE = 'CHOCHOLOUSP.PUBLIC', DEFAULT_ROLE = 'ROLE_KOUC';")
+    print("CREATE OR REPLACE USER KOUC_"+u+" PASSWORD = 'SpANEKSeNePRECENUJE', EMAIL = '"+e+"', MUST_CHANGE_PASSWORD = TRUE, DEFAULT_WAREHOUSE = 'EXT_PROJECT', DEFAULT_NAMESPACE = '" + dbname +".PUBLIC', DEFAULT_ROLE = 'ROLE_KOUC';")
 print("")
 #create user ondra password = 'SPANEKSENEPRECENUJE', email = 'HOSAK@AVAST.COM', must_change_password = true, DEFAULT_WAREHOUSE = 'EXT_PROJECT', DEFAULT_NAMESPACE = 'CHOCHOLOUSP.PUBLIC', DEFAULT_ROLE = 'EXT_ADMIN';
 
@@ -58,7 +59,7 @@ for node in cg["NODES"]:
         print (" \n" \
         "CREATE ROLE ROLE_"+n+"_"+u+";\n" \
         "CREATE SCHEMA SCH_"+n+"_"+u+";\n" \
-        "CREATE OR REPLACE USER "+n+"_"+u+" PASSWORD = 'SpANEKSePrECENUJE', MUST_CHANGE_PASSWORD = TRUE, DEFAULT_WAREHOUSE = 'EXT_PROJECT', DEFAULT_NAMESPACE = 'CHOCHOLOUSP."+n+"', DEFAULT_ROLE = 'ROLE_"+n+"'; \n" \
+        "CREATE OR REPLACE USER "+n+"_"+u+" PASSWORD = 'SpANEKSePrECENUJE', MUST_CHANGE_PASSWORD = TRUE, DEFAULT_WAREHOUSE = 'EXT_PROJECT', DEFAULT_NAMESPACE = '" + dbname + "." +n+"', DEFAULT_ROLE = 'ROLE_"+n+"'; \n" \
         )
 
 #granty
