@@ -85,10 +85,13 @@ for node in cg["NODES"]:
     "GRANT USAGE ON WAREHOUSE EXT_PROJECT01 TO ROLE ROLE_"+n+"; \n" \
     "GRANT USAGE ON SCHEMA SCH_"+n+" TO ROLE ROLE_"+n+"; \n" \
     "GRANT SELECT ON ALL TABLES IN SCHEMA SCH_"+n+" TO ROLE ROLE_"+n+"; \n" \
+    "GRANT SELECT ON FUTURE TABLES IN SCHEMA SCH_"+n+" TO ROLE ROLE_"+n+"; \n" \
     "GRANT USAGE ON SCHEMA SCH_"+n+"_HRISTE TO ROLE ROLE_"+n+"; \n" \
     "GRANT SELECT ON ALL TABLES IN SCHEMA SCH_"+n+"_HRISTE TO ROLE ROLE_"+n+"; \n" \
+    "GRANT SELECT ON FUTURE TABLES IN SCHEMA SCH_"+n+"_HRISTE TO ROLE ROLE_"+n+"; \n" \
     "GRANT ALL ON SCHEMA SCH_"+n+" TO ROLE ROLE_"+n+"_KOUC; \n"
-    "GRANT ALL ON ALL TABLES IN SCHEMA SCH_"+n+" TO ROLE ROLE_"+n+"_KOUC; ")
+    "GRANT ALL ON ALL TABLES IN SCHEMA SCH_"+n+" TO ROLE ROLE_"+n+"_KOUC; \n"
+    "GRANT ALL ON FUTURE TABLES IN SCHEMA SCH_"+n+" TO ROLE ROLE_"+n+"_KOUC; ")
     for u in node["LOGINS"]:
         print ("GRANT ROLE ROLE_"+n+" TO ROLE ROLE_"+n+"_"+u+";")
 
@@ -98,7 +101,9 @@ for node in cg["NODES"]:
         print ("GRANT ALL ON SCHEMA SCH_"+n+"_"+u+" TO ROLE ROLE_"+n+"_"+u+"; \n" \
         "GRANT ROLE ROLE_"+n+"_"+u+" TO USER "+n+"_"+u+"; \n" \
         "GRANT ALL ON ALL TABLES IN SCHEMA SCH_"+n+"_"+u+" TO ROLE ROLE_"+n+"_"+u+"; \n" \
+        "GRANT ALL ON FUTURE TABLES IN SCHEMA SCH_"+n+"_"+u+" TO ROLE ROLE_"+n+"_"+u+"; \n" \
         "GRANT ALL ON SCHEMA SCH_"+n+"_"+u+" TO ROLE ROLE_"+n+"_KOUC; \n" \
+        "GRANT ALL ON FUTURE TABLES IN SCHEMA SCH_"+n+"_"+u+" TO ROLE ROLE_"+n+"_KOUC; \n"
         "GRANT ALL ON ALL TABLES IN SCHEMA SCH_"+n+"_"+u+" TO ROLE ROLE_"+n+"_KOUC;" )
 #create schema $schema
 # role
