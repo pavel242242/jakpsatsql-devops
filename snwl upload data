@@ -1,0 +1,21 @@
+snowsql -a gn56074.west-europe.azure -u sadmin
+use warehouse compute_wh;
+use database courses;
+use schema public;
+put FILE://c:\temp\gtd\data_0_0_0.csv.bz2 @courses.public.%teror;
+put FILE://data_0_0_0.csv.bz2 @courses.public.%teror;
+put file:///Users/chocho/Downloads/data_0_0_0.c
+                                 sv.bz2 @teror;
+
+list @courses.sch_czechita.%teror;
+
+rm @courses.sch_czechita.%teror;
+
+copy into TEROR_DAPJ22
+  from @%teror
+  file_format = (type = csv 
+                 field_optionally_enclosed_by='"'
+                 field_delimiter = '\t'
+                 escape = '\\'
+                 NULL_IF = 'NULL') 
+  on_error = 'continue';
